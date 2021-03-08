@@ -25,7 +25,6 @@ public class US03_SeleniumEasyTest {
 
     }
 
-
     @Test
     public void tc0302() throws InterruptedException {
         /*Kullanici, "Java Script Alert Box" panelinde bulunan 'Click me!' butonuna tiklar ve
