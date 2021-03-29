@@ -37,8 +37,6 @@ public class US05_SeleniumEasyTest {
         easyPage5.startPractisingButton.click();
         easyPage5.proceedNextButton.click();
 
-
-
         easyPage5.jQueryListBoxLink.click();
         Select select = new Select(easyPage5.selectOptionsFromPanel);
         select.selectByVisibleText("Valentina");
