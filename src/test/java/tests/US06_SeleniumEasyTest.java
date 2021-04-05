@@ -33,7 +33,7 @@ public class US06_SeleniumEasyTest {
 
         // toplam 3(uc) sayfa link oldugunu
         int pagesNum = 0;
-        for (int i=1; i<easyPage6.pagesNumbersList.size()-1; i++){
+        for (int i=0; i<easyPage6.pagesNumbersList.size(); i++){
             pagesNum++;
         }
         Assert.assertTrue(pagesNum==3);
@@ -109,12 +109,12 @@ public class US06_SeleniumEasyTest {
         }
 
         Thread.sleep(1000);
-        actions.click(easyPage6.makeActiveButton).build().perform();
+                easyPage6.searchBoxList.get(3).sendKeys("B");
+        for (WebElement w: easyPage6.listB){
+            System.out.println("w.getText() = " + w.getText());
+        }
+//        System.out.println(easyPage6.listB.get(0).getText());
 
-        JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
-        executor.executeScript("arguments[0].value='B';", easyPage6.inactiveInputList.get(3) );
-
-//        System.out.println(easyPage6.secondInputWith_m.getText());
 
     }
 }

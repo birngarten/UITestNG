@@ -15,15 +15,15 @@ public class US06_SeleniumEasyPage {
 
     @FindBy(xpath = "//a[.='No, thanks!']")
     public WebElement entryMessage;
-    @FindBy(id = "btn_basic_example")
-    public WebElement startPractisingButton;
+//    @FindBy(id = "btn_basic_example")
+//    public WebElement startPractisingButton;
     @FindBy(xpath = "//*[@id='advanced_example']/span/i")
     public WebElement advancedButton;
 
     @FindBy(xpath = "//div[@id='advanced']/div/a[1]")
     public WebElement tablePaginationLink;
 
-    @FindBy(xpath = "//ul[@id='myPager']/li/a")
+    @FindBy(xpath = "//a[contains(@class, 'page')]") // *** //a[contains(@class, 'page')]
     public List<WebElement> pagesNumbersList;
 
     @FindBy(xpath = "//a[@style='display: block;']")
@@ -53,9 +53,9 @@ public class US06_SeleniumEasyPage {
     @FindBy(xpath = "(//button)[2]")
     public WebElement makeActiveButton;
 
-    @FindBy(xpath = "(//input[@type='text'])[4]")
-    public WebElement firstNameBox;
-
-    @FindBy(xpath = "(//div/table/tbody)[2]")
-    public WebElement secondInputWith_m;
+    @FindBy(xpath = "//input[@class='form-control']")
+    public List<WebElement> searchBoxList;
+    //input[@class='form-control']
+    @FindBy(xpath = "//tr[@style='display: table-row;']/td[3]")
+    public List<WebElement> listB;
 }
