@@ -37,6 +37,15 @@ public class US07_SeleniumEasyTest {
         Assert.assertTrue(easyPage07.panelContainerList.size()==5);
         Thread.sleep(1000);
         easyPage07.orangeButton.click();
+//        ***** CALIS UYARLA
+//        int count = 0;
+//        for (WebElement w : tabloFilterPage.mediaElements) {
+//            tabloFilterPage.orangeButton.click();
+//            if (!w.getAttribute("style").equals("display: none;")) {
+//                count++;
+//
+//            }
+//        }
         Assert.assertTrue(easyPage07.orangeElementList.size()==2);
         Driver.getDriver().navigate().back();
 
