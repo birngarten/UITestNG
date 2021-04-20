@@ -1,5 +1,7 @@
 package tests;
 
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,6 +12,10 @@ import pages.US08_SeleniumEasyPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import javax.print.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -44,7 +50,7 @@ public class US08_SeleniumEasyTest {
         for (WebElement w: easyPage08.citiesOfOffice){
             citiesList.add(w.getText());
         }
-//        System.out.println(citiesList); // [London, New York, Edinburgh, San Francisco]
+        System.out.println(citiesList); // [London, New York, Edinburgh, San Francisco]
         Assert.assertTrue(citiesList.size() ==4 );
         Driver.getDriver().navigate().back();
 
@@ -65,6 +71,41 @@ public class US08_SeleniumEasyTest {
         String pdfURL = "C:/Users/Administrator/Downloads/Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.pdf";
         boolean isPDFDownload = Files.exists(Paths.get(pdfURL));
         Assert.assertTrue(isPDFDownload);
+
+    }
+    // Print
+    @Test
+    public void filePrinter() throws FileNotFoundException {
+        String filePath = "C:/Users/Administrator/Downloads/Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.pdf";
+        FileInputStream in = new FileInputStream(filePath);
+        Doc doc = new SimpleDoc(in, DocFlavor.INPUT_STREAM.AUTOSENSE, null);
+        PrintService service = PrintServiceLookup.lookupDefaultPrintService();
+
+        try {
+            service.createPrintJob().print(doc, null);
+        } catch (PrintException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // Text reader
+    @Test
+    public void pdfReader() {
+        String filePath =  "C:/Users/Administrator/Downloads/Selenium Easy - Download Table Data to CSV, Excel, PDF and Print.pdf";
+        String page = "";
+
+        try {
+
+            PdfReader reader = new PdfReader(filePath);
+            System.out.println("This PDF has " + reader.getNumberOfPages() + " pages.");
+            page = PdfTextExtractor.getTextFromPage(reader, 1);
+            System.out.println("Page Content:\n\n" + page + "\n\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(page.contains("London"));
 
     }
 }
