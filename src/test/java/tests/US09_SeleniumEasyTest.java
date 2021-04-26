@@ -20,13 +20,17 @@ public class US09_SeleniumEasyTest {
         easyPage09.entryMessage.click();
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.waitFor(1);
+        easyPage09.advancedButton.click();
     }
 
     @Test
-    public void TC0901(){
+    public void TC0901() throws InterruptedException {
         /*Kullanici, Advanced ==> "JQuery Download Progress bars" linkine tiklar. Acilan sayfada
         'Start Download' butonuna tikladiktan sonra acilan 'File Download' span'inda verinin inmeye
         baslandigini ve islem bittikten sonrada "Complete!" textinin gorundugunu dogrular    */
+        easyPage09.JQueryDownloadProgressbarsLink.click();
+        Thread.sleep(1000);
+        easyPage09.downloadButton.click();
 
     }
 

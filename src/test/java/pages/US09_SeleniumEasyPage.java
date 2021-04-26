@@ -18,4 +18,9 @@ public class US09_SeleniumEasyPage {
 
 //    ================================
 
+    @FindBy(xpath = "(//a[.='JQuery Download Progress bars'])[3]")
+    public WebElement JQueryDownloadProgressbarsLink;
+
+    @FindBy(id = "downloadButton")
+    public WebElement downloadButton;
 }
